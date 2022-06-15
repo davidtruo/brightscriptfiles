@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="Reverse" extends="Scene">
+	<script type="text/brightscript" uri="pkg:/components/reverse.brs" />
+	<children>
+      <Label id="mylabel"
+      	text=""
+      	width="1280"
+      	height="360"
+      	horizAlign="center"
+      	vertAlign="center"
+      	/>
+				<keyboard id="keyboard"
+						translation = "[ 180 , 50 ]"
+				/>
+				<button id="button"
+						height="60"
+			      translation="[360, 400]"
+						minWidth="600"
+	         	maxWidth="600">
+						<Label id="label"
+								text = "Enter"
+		            color="0xFF0000FF"
+								height="60"
+								width="600"
+								vertAlign="center"
+								horizAlign="center"
+						/>
+				</button>
+    </children>
+</component>
