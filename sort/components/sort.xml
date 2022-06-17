@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="Sort" extends="Scene">
+	<script type="text/brightscript" uri="pkg:/components/sort.brs" />
+	<children>
+      <Label id="mylabel"
+      	text="((((3123))))))"
+      	width="1280"
+      	height="360"
+      	horizAlign="center"
+      	vertAlign="center"
+      	/>
+				<keyboard id="keyboard"
+						translation = "[ 180 , 50 ]"
+				/>
+				<button id="sort"
+						height="60"
+			      translation="[560, 400]"
+						minWidth="200"
+	         	maxWidth="200">
+						<Label id="labelSort"
+								text = "Sort"
+		            color="0xFF0000FF"
+								height="60"
+								width="200"
+								vertAlign="center"
+								horizAlign="center"
+						/>
+				</button>
+    </children>
+</component>
