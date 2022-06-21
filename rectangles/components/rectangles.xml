@@ -1,51 +1,44 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="Rectangles" extends="Scene">
-	<script type="text/brightscript" uri="pkg:/components/rectangles.brs" />
-	<children>
-      <rectangle id="topleft"
-				  width="400"
-				  height="240"
-				  translation="[0,0]"
-			/>
-      <rectangle id="topMiddle"
-				  width="400"
-				  height="240"
-				  translation="[440,0]"
-			/>
-			<rectangle id="topRight"
-				  width="400"
-				  height="240"
-				  translation="[880,0]"
-			/>
-			<rectangle id="left"
-				  width="400"
-				  height="240"
-				  translation="[0,260]"
-			/>
-			<rectangle id="middle"
-				  width="400"
-				  height="240"
-				  translation="[440,260]"
-			/>
-			<rectangle id="right"
-				  width="400"
-				  height="240"
-				  translation="[880,260]"
-			/>
-			<rectangle id="bottomLeft"
-				  width="400"
-				  height="240"
-				  translation="[0,520]"
-			/>
-			<rectangle id="bottomMiddle"
-				  width="400"
-				  height="240"
-				  translation="[440,520]"
-			/>
-			<rectangle id="bottomRight"
-				  width="400"
-				  height="240"
-				  translation="[880,520]"
-			/>
-  </children>
+		<script type="text/brightscript" uri="pkg:/components/rectangles.brs" />
+		<children>
+				<Label id="mylabel"
+						text="Number of Rows = ?"
+						width="1280"
+						height="360"
+						horizAlign="center"
+						vertAlign="center"
+				/>
+				<keyboard id="keyboard"
+						translation = "[ 180 , 50 ]"
+				/>
+				<button id="button"
+						height="60"
+			      translation="[560, 400]"
+						minWidth="200"
+	         	maxWidth="200">
+						<Label id="labelButton"
+								text = "Submit"
+		            color="0xFF0000FF"
+								height="60"
+								width="200"
+								vertAlign="center"
+								horizAlign="center"
+						/>
+				</button>
+				<button id="button2"
+						height="60"
+			      translation="[560, 400]"
+						minWidth="200"
+	         	maxWidth="200">
+						<Label id="labelButton2"
+								text = "Submit"
+		            color="0xFF0000FF"
+								height="60"
+								width="200"
+								vertAlign="center"
+								horizAlign="center"
+						/>
+				</button>
+	  </children>
 </component>
