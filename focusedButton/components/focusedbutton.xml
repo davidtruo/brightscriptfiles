@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="FocusedButton" extends="Scene">
+		<script type="text/brightscript" uri="pkg:/components/focusedbutton.brs" />
+		<children>
+				<Poster id="OneButton"
+						height="100"
+						width="100"
+			      translation="[560, 400]"
+						uri="pkg:/images/ButtonFocused.9.png"/>
+				<Poster id="TwoButton"
+						height="100"
+						width="100"
+			      translation="[360, 400]"
+						uri="pkg:/images/ButtonUnFocused.9.png"/>
+	  </children>
+</component>
