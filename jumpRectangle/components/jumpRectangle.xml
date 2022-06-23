@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="jumpRectangle" extends="Scene">
+		<script type="text/brightscript" uri="pkg:/components/jumpRectangle.brs" />
+		<children>
+				<Poster id="rect"
+						height="100"
+						width="300"
+						uri="pkg:/images/test1.9.png"
+						blendcolor="#FFFFFF"
+						translation="[300,300]"
+				/>
+	  </children>
+</component>
