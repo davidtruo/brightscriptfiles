@@ -2,15 +2,18 @@
 <component name="Rectangles" extends="Scene">
 		<script type="text/brightscript" uri="pkg:/components/rectangles.brs" />
 		<children>
-				<Label id="mylabel"
+				<Label id="label"
 						text="Number of Rows = ?"
 						width="1280"
 						height="360"
 						horizAlign="center"
 						vertAlign="center"
+						color="0xFF0000FF"
+				    translation = "[ 0 , 360 ]"
 				/>
 				<keyboard id="keyboard"
 						translation = "[ 180 , 50 ]"
+						text = "4"
 				/>
 				<button id="button"
 						height="60"
@@ -26,19 +29,6 @@
 								horizAlign="center"
 						/>
 				</button>
-				<button id="button2"
-						height="60"
-			      translation="[560, 400]"
-						minWidth="200"
-	         	maxWidth="200">
-						<Label id="labelButton2"
-								text = "Submit"
-		            color="0xFF0000FF"
-								height="60"
-								width="200"
-								vertAlign="center"
-								horizAlign="center"
-						/>
-				</button>
+				<group id="rectGroup"/>
 	  </children>
 </component>

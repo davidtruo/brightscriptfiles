@@ -8,23 +8,24 @@
       	height="360"
       	horizAlign="center"
       	vertAlign="center"
-      	/>
-				<keyboard id="keyboard"
-						translation = "[ 180 , 50 ]"
-				/>
-				<button id="binary"
-						height="60"
-			      translation="[560, 400]"
-						minWidth="200"
-	         	maxWidth="200">
-						<Label id="labelBinary"
-								text = "To Binary"
-		            color="0xFF0000FF"
-								height="60"
-								width="200"
-								vertAlign="center"
-								horizAlign="center"
-						/>
+				translation = "[ 0 , 360 ]"
+				color="0xFF0000FF">
+			</Label>
+			<keyboard id="keyboard"
+					translation = "[ 180 , 50 ]"
+					text = "33"/>
+			<button id="binary"
+					height="60"
+		      translation="[560, 400]"
+					minWidth="200"
+         	maxWidth="200">
+					<Label id="labelBinary"
+							text = "To Binary"
+	            color="0xFF0000FF"
+							height="60"
+							width="200"
+							vertAlign="center"
+							horizAlign="center"/>
 				</button>
     </children>
 </component>

@@ -1,54 +1,42 @@
 sub init()
     m.top.setFocus(true)
+    m.part1 = false
     m.x = 0
-    m.y = 0
-    m.row = false
 
-    m.mylabel = m.top.findNode("myLabel")
-    m.mylabel.translation = [ 0 , 360 ]
-    m.mylabel.font.size=92
-    m.mylabel.color="0x72D7EEFF"
+    m.label = m.top.findNode("label")
+    m.label.font.size=92
 
     m.keyboard = m.top.findNode("keyboard")
-    m.keyboard.text = "4"
+
+    m.group = m.top.findNode("rectGroup")
 
     m.button = m.top.findNode("button")
     m.button.observeField("buttonSelected", "calculate")
-
-    m.button2 = m.top.findNode("button2")
-    m.button2.visible = false
-    m.button2.observeField("buttonSelected", "calculatepart2")
 end sub
 
 sub calculate()
-    m.mylabel.text = "Number of Columns = ?"
-    m.x = m.keyboard.text.toInt()
-    m.keyboard.text = "4"
-    m.row = true
-    m.button.visible = false
-    m.button2.visible = true
-end sub
-
-sub calculatepart2()
-    m.y = m.keyboard.text.toInt()
-    m.keyboard.visible = false
-    m.button2.visible = false
-    m.mylabel.visible = false
-    makeRectangles(m.x, m.y)
+    if m.part1 = false
+        m.label.text = "Number of Columns = ?"
+        m.x = m.keyboard.text.toInt()
+        m.part1 = true
+    else
+        m.keyboard.visible = false
+        m.label.visible = false
+        m.button.visible = false
+        makeRectangles(m.x, m.keyboard.text.toInt())
+    end if
 end sub
 
 sub makeRectangles(x as Integer, y as Integer)
-    rectArray = []
     for cols = 0 to x - 1
         for rows = 0 to y - 1
-            rectArray.push(CreateObject("roSGNode", "Rectangle"))
-            m.top.appendChild(rectArray.peek())
-            randomColor(rectArray.peek(), 100, 100, cols * 120, rows * 120)
+            m.group.appendChild(randomColor(100, 100, cols * 120, rows * 120))
         end for
     end for
 end sub
 
-sub randomColor(rect, width as Integer, height as Integer, posX as Integer, posY as Integer)
+function randomColor(width as Integer, height as Integer, posX as Integer, posY as Integer) as Object
+    rect = CreateObject("roSGNode", "Rectangle")
     rect.width = width
     rect.height = height
     rect.translation = [posX, posY]
@@ -58,29 +46,18 @@ sub randomColor(rect, width as Integer, height as Integer, posX as Integer, posY
         color += colorcode.mid(rnd(17),1)
     end for
     rect.color = color
-end sub
+    return rect
+end function
 
 function onKeyEvent(key as String, press as Boolean)
     handled = false
-    if m.row = false
-        if press
-            if key = "down"
-                m.button.setFocus(true)
-                handled = true
-            else if key = "up"
-                m.keyboard.setFocus(true)
-                handled = true
-            end if
-        end if
-    else
-        if press
-            if key = "down"
-                m.button2.setFocus(true)
-                handled = true
-            else if key = "up"
-                m.keyboard.setFocus(true)
-                handled = true
-            end if
+    if press
+        if key = "down"
+            m.button.setFocus(true)
+            handled = true
+        else if key = "up"
+            m.keyboard.setFocus(true)
+            handled = true
         end if
     end if
 
