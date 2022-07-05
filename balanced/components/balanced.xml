@@ -7,10 +7,13 @@
       	width="1280"
       	height="360"
       	horizAlign="center"
+				color="0xFF0000FF"
       	vertAlign="center"
+				translation = "[ 0 , 360 ]"
       	/>
 				<keyboard id="keyboard"
 						translation = "[ 180 , 50 ]"
+						text = "()"
 				/>
 				<button id="balanced"
 						height="60"
