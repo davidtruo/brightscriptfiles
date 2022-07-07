@@ -26,7 +26,7 @@ sub OnButtonSelected(event)
     details = event.GetRoSGNode()
     content = details.content
     buttonIndex = event.getData()
-    button = details.button.getChild(buttonIndex)
+    button = details.buttons.getChild(buttonIndex)
     selectedItem = details.itemFocused
     if button.id = "play"
         HandlePlayButton(content, selectedItem)
@@ -47,23 +47,20 @@ sub HandlePlayButton(content as Object, selectedItem as Integer, isResume = fals
         node = CreateObject("roSGNode", "ContentNode")
         node.id = itemContent.id
         node.Update({ children: children }, true)
-        index = 0
         if isResume = true
             smartBookmarks = MasterChannelSmartBookmarks()
-            episodesId = smartBookmarks.GetSmartBookmarkForSeries(itemContent.id)
+            episodeId = smartBookmarks.GetSmartBookmarkForSeries(itemContent.id)
             if episodeId <> invalid and episodeId <> ""
                 episode = FindNodeById(content, episodeId)
-                if episode <> invalid
-                    index = episode.numEpisodes
-                end if
             end if
         else
-            episode = node.GetChild(0)
+            episode = node.getChild(0)
             episode.bookmarkPosition = 0
         end if
-        ShowVideoScreen(node, 0, true)
     else
-        ShowVideoScreen(content, selectedItem)
+        if isResume = false
+            itemContent.bookmarkPosition = 0
+        end if
     end if
     if m.selectedIndex = invalid
         m.selectedIndex = [0, 0]

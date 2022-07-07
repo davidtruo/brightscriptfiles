@@ -20,20 +20,19 @@ sub GetContent()
                 row.children = []
                 homeItemIndex = 0
                 for each item in value
-                    season = GetSeasonData(item.seasons, homeRowIndex, homeItemIndex, item.id)
+                    seasons = GetSeasonData(item.seasons, homeRowIndex, homeItemIndex, item.id)
                     itemData = GetItemData(item)
                     itemData.homeRowIndex = homeRowIndex
                     itemData.homeItemIndex = homeItemIndex
-                    seasons = GetSeasonData(item.seasons)
                     itemData.mediaType = category
                     if seasons <> invalid and seasons.Count() > 0
                         itemData.children = seasons
                     end if
                     row.children.Push(itemData)
-                    homeItemIndex++
+                    homeItemIndex ++
                 end for
                 rootChildren.Push(row)
-                homeRowIndex++
+                homeRowIndex ++
             end if
         end for
         contentNode = CreateObject("roSGNode", "ContentNode")
@@ -54,6 +53,7 @@ function GetItemData(video as Object) as Object
     item.hdPosterURL = video.thumbnail
     item.title = video.title
     item.releaseDate = video.releaseDate
+    item.categories = video.genres
     item.id = video.id
     if video.episodeNumber <> invalid
         item.episodePosition = video.episodeNumber.ToStr()

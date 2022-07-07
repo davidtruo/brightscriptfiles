@@ -4,7 +4,8 @@ function ShowEpisodesScreen(content as Object, itemIndex = 0 as Integer) as Obje
     episodesScreen.content = content
     episodesScreen.jumpToItem = itemIndex
     ShowScreen(episodesScreen)
-end sub
+    return episodesScreen
+end function
 
 sub OnEpisodesScreenItemSelected(event as Object)
     episodesScreen = event.GetRoSGNode()

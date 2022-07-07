@@ -1,5 +1,5 @@
 function Init()
-    m.top.ObserveField("visible", "onVisibleChange")
+    m.top.ObserveField("visible", "OnVisibleChange")
     m.categoryList = m.top.FindNode("categoryList")
     m.categoryList.ObserveField("itemFocused", "OnCategoryItemFocused")
     m.itemsList = m.top.FindNode("itemsList")
@@ -32,7 +32,7 @@ sub InitSections(content as Object)
         m.firstItemInSection.Push(m.firstItemInSection.Peek() + itemsPerSection)
         sectionCount++
     end for
-    m.firstItemInSection.Pop()
+    m.firstItemInSection.Pop() ' remove last item
     m.categoryList.content = ContentListToSimpleNode(sections)
 end sub
 
@@ -40,7 +40,7 @@ sub OnCategoryItemFocused(event as Object)
     if m.categoryListGainFocus = true
         m.categoryListGainFocus = false
     else
-        focusedItem = event.getData()
+        focusedItem = event.GetData() ' index of season
         m.itemsList.jumpToItem = m.firstItemInSection[focusedItem]
     end if
 end sub
@@ -56,7 +56,7 @@ sub OnContentChange()
     m.itemsList.content = content
 end sub
 
-sub onVisibleChange()
+sub OnVisibleChange()
     if m.top.visible = true
         m.itemsList.setFocus(true)
     end if
@@ -68,7 +68,7 @@ sub OnListItemSelected(event as Object)
     m.top.selectedItem = [sectionIndex, itemSelected - m.firstItemInSection[sectionIndex]]
 end sub
 
-function OnKeyEvent(key as String, press as Boolean) as Boolean
+function onKeyEvent(key as String, press as Boolean) as Boolean
     result = false
     if press
         if key = "left" and m.itemsList.HasFocus()

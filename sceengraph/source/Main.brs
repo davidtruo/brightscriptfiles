@@ -7,25 +7,26 @@ sub ShowChannelRSGScreen(args as Object)
     m.port = CreateObject("roMessagePort")
     screen.SetMessagePort(m.port)
     scene = screen.CreateScene("MainScene")
-    screen.Show() ' Init method in MainScene.brs is invoked
-    sceneLaunchArgs = args
-    inputObjet = createObject("roInput")
+    screen.Show()
+    scene.launchArgs = args
+    inputObject = createObject("roInput")
     inputObject.SetMessagePort(m.port)
 
     while(true)
         msg = wait(0, m.port)
         msgType = type(msg)
+        ?"msgTyp="msgType
         if msgType = "roSGScreenEvent"
             if msg.IsScreenClosed() then return
         else if msgType = "roInputEvent"
             inputData = msg.getInfo()
             ? "input"
             if inputData.DoesExist("mediaType") and inputData.DoesExist("contentId")
-                deepLink = {
-                    contentId: inputData.contentId
+                deeplink = {
+                    contentId: inputData.contentID
                     mediaType: inputData.mediaType
                 }
-                scene.inputArgs = deepLink
+                scene.inputArgs = deeplink
             end if
         end if
     end while

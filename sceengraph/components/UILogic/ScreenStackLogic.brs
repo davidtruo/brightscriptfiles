@@ -26,9 +26,6 @@ sub CloseScreen(node as Object)
     end if
 end sub
 
-function GetCurrentScreen()
-    return m.screenStack.Peek()
-end function
 
 sub AddScreen(node as Object)
     m.top.AppendChild(node)
