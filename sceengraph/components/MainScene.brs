@@ -1,10 +1,11 @@
 sub Init()
     m.top.backgroundColor = "0x662D91"
-    m.top.backgroundUri = "pkg:/images/background.jpg"
+    m.top.backgroundUri= "pkg:/images/background.jpg"
     m.loadingIndicator = m.top.FindNode("loadingIndicator")
     InitScreenStack()
     ShowGridScreen()
     RunContentTask()
+    m.top.SignalBeacon("AppLaunchComplete")
 end sub
 
 function OnkeyEvent(key as String, press as Boolean) as Boolean
@@ -18,6 +19,5 @@ function OnkeyEvent(key as String, press as Boolean) as Boolean
             end if
         end if
     end if
-
     return result
 end function

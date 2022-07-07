@@ -1,44 +1,31 @@
-sub ShowVideoScreen(content as Object, itemIndex as Integer)
-    m.videoPlayer = CreateObject("roSGNode", "Video")
-    if itemIndex <> 0
-        numOfChildren = content.GetChildCount()
-        
-        children = content.GetChildren(numOfChildren - itemIndex, itemIndex)
-
-        childrenClone = []
-
-        for each child in children
-            childrenClone.Push(child.Clone(false))
-        end for
-
-        node = CreateObject("roSGNode", "ContentNode")
-        node.Update({
-            children: childrenClone
-        }, true)
-        m.videoPlayer.content = node
-    else
-        m.videoPlayer.content = content.Clone(true)
-    end if
-    m.videoPlayer.contentIsPlaylist = true
-    Showscreen(m.videoplayer)
-    m.videoPlayer.control = "play"
-    m.videoPlayer.ObserveField("state", "OnVideoPlayerStateChange")
-    m.videoPlayer.ObserveField("visible", "OnVideoVisibleChange")
+sub ShowVideoScreen(rowContent as Object, selectedItem as Integer, isSeries = false as Boolean)
+    videoScreen = CreateObject("roSGNode", "VideoScreen")
+    videoScreen.observeField("close", "OnVideoScreenClose")
+    videoScreen.isSeries = isSeries
+    videoScreen.content = rowContent
+    videoScreen.startIndex = selectedItem
+    ShowScreen(videoScreen)
 end sub
 
-sub OnVideoPlayerStateChange()
-    state = m.videoPlayer.state
-    if state = "error" or state = "finished"
-        CloseScreen(m.videoPlayer)
-    end if
-end sub
-
-sub OnVideoVisibleChange()
-    if m.videoPlayer.visible = false and m.top.visible = true
-        currentIndex = m.videoPlayer.contentIndex
-        m.videoPlayer.control = "stop"
-        m.videoPlayer.content = invalid
-        m.GridScreen.SetFocus(true)
-        m.GridScreen.jumpToRowItem = [m.selectedIndex[0], currentIndex + m.selectedIndex[1]]
+sub OnVideoScreenClose(event as Object)
+    videoScreen = event.GetRoSGNode()
+    close = event.GetData()
+    if close = true
+        CloseScreen(videoScreen)
+        screen = GetCurrentScreen()
+        screen.SetFocus(true)
+        if m.deepLinkDetailsScreen <> invalid
+            content = videoScreen.content
+            if videoScreen.isSeries = true
+                content = content.GetChild(videoScreen.lastIndex)
+            end if
+            if content <> invalid
+                m.deepLinkDetailsScreen.content = content.clone(true)
+            end if
+        else
+            if videoScreen.isSeries = false
+                screen.jumpToItem = videoScreen.lastIndex
+            end if
+        end if
     end if
 end sub
