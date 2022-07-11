@@ -6,6 +6,9 @@ sub Init()
     ShowGridScreen()
     RunContentTask()
     m.top.SignalBeacon("AppLaunchComplete")
+
+    m.global.AddField("channelStore", "node", false)
+    m.global.channelStore = CreateObject("roSGNode", "ChannelStore")
 end sub
 
 function OnkeyEvent(key as String, press as Boolean) as Boolean

@@ -1,7 +1,7 @@
 sub ShowGridScreen()
     m.GridScreen = CreateObject("roSGNode", "GridScreen")
     m.GridScreen.ObserveField("rowItemSelected", "OnGridScreenItemSelected")
-    ShowScreen(m.GridScreen) ' show GridScreen
+    ShowScreen(m.GridScreen)
 end sub
 
 sub OnGridScreenItemSelected(event as Object)

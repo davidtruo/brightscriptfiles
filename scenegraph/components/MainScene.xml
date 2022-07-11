@@ -1,9 +1,5 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <component name = "MainScene" extends = "Scene">
-    <interface>
-        <field id = "inputArgs" type = "assocarray" onChange = "OnInputDeepLinking" />
-        <field id = "launchArgs" type = "assocarray" />
-    </interface>
     <script type = "text/brightscript" uri = "MainScene.brs" />
     <script type = "text/brightscript" uri = "pkg:/source/utils.brs" />
     <script type = "text/brightscript" uri = "UILogic/VideoPlayerLogic.brs" />
@@ -15,6 +11,10 @@
     <script type = "text/brightscript" uri = "UILogic/DeepLinkingLogic.brs" />
     <script type = "text/brightscript" uri = "UILogic/BookmarksLogic.brs" />
     <script type = "text/brightscript" uri = "UILogic/SmartBookmarksLogic.brs" />
+    <interface>
+        <field id = "inputArgs" type = "assocarray" onChange = "OnInputDeepLinking" />
+        <field id = "launchArgs" type = "assocarray" />
+    </interface>
     <children>
          <Overhang
             id = "overhang"

@@ -9,8 +9,8 @@ sub ShowChannelRSGScreen(args as Object)
     scene = screen.CreateScene("MainScene")
     screen.Show()
     scene.launchArgs = args
-    inputObject = createObject("roInput")
-    inputObject.SetMessagePort(m.port)
+    inputObject=createobject("roInput")
+    inputObject.setmessageport(m.port)
 
     while(true)
         msg = wait(0, m.port)

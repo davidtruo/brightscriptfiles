@@ -26,7 +26,6 @@ sub CloseScreen(node as Object)
     end if
 end sub
 
-
 sub AddScreen(node as Object)
     m.top.AppendChild(node)
     m.screenStack.Push(node)

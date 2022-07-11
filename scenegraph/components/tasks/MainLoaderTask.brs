@@ -9,6 +9,7 @@ sub GetContent()
     rsp = xfer.GetToString()
     rootChildren = []
     rows = {}
+
     json = ParseJson(rsp)
     if json <> invalid
         homeRowIndex = 0

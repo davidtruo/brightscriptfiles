@@ -32,7 +32,7 @@ sub InitSections(content as Object)
         m.firstItemInSection.Push(m.firstItemInSection.Peek() + itemsPerSection)
         sectionCount++
     end for
-    m.firstItemInSection.Pop() ' remove last item
+    m.firstItemInSection.Pop()
     m.categoryList.content = ContentListToSimpleNode(sections)
 end sub
 
@@ -40,7 +40,7 @@ sub OnCategoryItemFocused(event as Object)
     if m.categoryListGainFocus = true
         m.categoryListGainFocus = false
     else
-        focusedItem = event.GetData() ' index of season
+        focusedItem = event.GetData()
         m.itemsList.jumpToItem = m.firstItemInSection[focusedItem]
     end if
 end sub

@@ -1,4 +1,4 @@
-APPNAME = phase1_rsg
+APPNAME = Scenegraph
 ZIP_EXCLUDE= -x keys\* -x store_assets\*
 APPSROOT = ../..
 

@@ -57,10 +57,12 @@ sub HandlePlayButton(content as Object, selectedItem as Integer, isResume = fals
             episode = node.getChild(0)
             episode.bookmarkPosition = 0
         end if
+        ShowVideoScreen(node, 0, true)
     else
         if isResume = false
             itemContent.bookmarkPosition = 0
         end if
+        ShowVideoScreen(content, selectedItem)
     end if
     if m.selectedIndex = invalid
         m.selectedIndex = [0, 0]
